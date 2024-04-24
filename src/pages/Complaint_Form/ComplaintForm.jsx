@@ -340,7 +340,7 @@ else if (response.ok) {
           </div>
        
           <div className='forms m-forms'>
-            <input 
+            <textarea cols='50'
               type='text'
               name='Details_of_Incident'
               id='Details_of_Incident'
@@ -357,7 +357,7 @@ else if (response.ok) {
             </div>
           </div>
           <div className='forms m-forms'>
-            <textarea cols='50'
+            <input 
               type='date'
               name='Date_of_incident'
               id='Date_of_incident'
