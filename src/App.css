@@ -1,0 +1,131 @@
+.sidebar {
+  box-shadow: rgb(113 122 131 / 11%) 0px 7px 30px 0px;
+}
+@media  screen and (max-width:800px) {
+  .sidebar{
+    z-index: 10000000;
+  }
+}
+
+.nav-item,
+.navbar {
+  z-index: 10000;
+  margin-left: 0px;
+  
+}
+.parent_app_div{
+    display:flex;
+    position:relative;
+    /* margin-left: 30px; */
+    /* margin-right: 30px; */
+    background-color: white;
+}
+
+.parent_app_div_dark{
+  display:flex;
+  position:relative;
+  /* margin-left: 30px; */
+  margin-right: 30px;
+  background-color: white;
+}
+
+.all{
+  background-color: #212122;
+}
+.nall{
+  background-color: rgb(241, 240, 240);
+}
+Link{
+    text-decoration: none;
+}
+.active_first{
+    min-height: 100vh;
+    width:100%;
+    background-color: rgb(241, 240, 240);
+   
+}
+
+.active_first_dark{
+  min-height: 100vh;
+  width:100%;
+  background-color: #212122;
+ 
+}
+.active_second{
+    min-height: 100vh;
+    flex:2;
+    width:100%;
+    padding:-5px;
+    padding-right: 0;
+    background-color: rgb(241, 240, 240);
+}
+
+.active_second_dark{
+  min-height: 100vh;
+  flex:2;
+  width:100%;
+  padding:-5px;
+  background-color: #212122;
+}
+
+/* .style_body{
+  background: rgb(241, 240, 240);
+} */
+.navbar_div_app{
+    position: fixed;
+    width:100%;
+   padding-left: 30px;
+   padding-right: 30px;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+   background-color: rgb(241, 240, 240);
+    /* margin-right: 30px; */ 
+    
+    /* min-height: 100vh; */
+  }
+
+  .navbar_div_app_dark{
+    position: fixed;
+    width:100%;
+   padding-left: 30px;
+   padding-right: 30px;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+   background-color: #212122;
+    /* margin-right: 30px; */ 
+    
+    /* min-height: 100vh; */
+  }
+
+
+  
+  .initial_sidebar{
+    width:330px;
+    position:fixed;
+    background-color: white;
+  
+}
+
+.initial_sidebar_dark{
+  width:330px;
+  position:fixed;
+  background-color: #212122;
+
+}
+.final_sidebar{
+    width:0;
+    
+}
+
+
+
+  
+
+@media (min-width: 768px){
+    .active_first {
+        margin-left:20rem;
+        
+    } 
+    .navbar_div_app{
+        position:static;
+    }
+}
+

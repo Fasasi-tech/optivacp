@@ -1,0 +1,36 @@
+.mode_div{
+    position:absolute;
+    right:1rem;
+    top:5rem;
+    padding:1.2rem;
+    width:7rem;
+    background-color: rgb(241, 240, 240);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index: 3;
+
+
+}
+
+.cursor_p{
+    cursor:pointer;
+    padding-top: 1rem;
+}
+
+.dark-mode{
+   background-color: black; 
+}
+
+.mode_div_black{
+    position:absolute;
+    right:1rem;
+    top:5rem;
+    padding:0.3rem;
+    width:7rem;
+    background-color: #1b1b1b;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    color:white;
+
+
+}
