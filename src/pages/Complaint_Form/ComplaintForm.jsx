@@ -91,7 +91,7 @@ const handleSubmit = async (values) =>{
 }
 
 async function callApi(accessToken, values){
-  try{  const response = await fetch("https://api.businesscentral.dynamics.com/v2.0/1a138626-759e-4827-97f1-b49b7fd4caef/Production/ODataV4/Company('My%20Company')/complaintFormCard", {
+  try{  const response = await fetch("https://api.businesscentral.dynamics.com/v2.0/1a138626-759e-4827-97f1-b49b7fd4caef/OPTIVA_API/ODataV4/Company('My%20Company')/ComplaintFormCard", {
   method: 'POST',
   headers: {
     'Authorization':  `Bearer ${accessToken}`, 
@@ -178,7 +178,7 @@ else if (response.ok) {
       const accessTokenResponse = await instance.acquireTokenSilent(accessTokenRequest);
       const accessToken = accessTokenResponse.accessToken;
   
-      const response = await fetch("https://api.businesscentral.dynamics.com/v2.0/1a138626-759e-4827-97f1-b49b7fd4caef/Production/ODataV4/Company('My%20Company')/HREmployeeList", {
+      const response = await fetch("https://api.businesscentral.dynamics.com/v2.0/1a138626-759e-4827-97f1-b49b7fd4caef/OPTIVA_API/ODataV4/Company('My%20Company')/HREmployeeList", {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${accessToken}`, // Include your access token
