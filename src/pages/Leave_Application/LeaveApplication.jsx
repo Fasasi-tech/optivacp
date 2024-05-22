@@ -459,7 +459,7 @@ const isWeekend = () => {
       const accessTokenResponse = await instance.acquireTokenSilent(accessTokenRequest);
       const accessToken = accessTokenResponse.accessToken;
 
-      const response = await fetch("https://api.businesscentral.dynamics.com/v2.0/1a138626-759e-4827-97f1-b49b7fd4caef/OPTIVA_API/ODataV4/Company('My%20Company')/ResponsibilityCenterList", {
+      const response = await fetch("https://api.businesscentral.dynamics.com/v2.0/1a138626-759e-4827-97f1-b49b7fd4caef/OPTIVA_API/ODataV4/Company('My%20Company')/HREmployeeList", {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${accessToken}`, // Include your access token
@@ -930,6 +930,7 @@ const getNoFromEmployeeAPi = () =>{
                   <option key={employe.id} value={employe.No}>{employe.No}{' '}{employe.First_Name}{' '}{employe.Middle_Name}{' '}({employe.Department_Code})</option>
                 ))}
               </select>
+              {console.log(employee)}
               <label className='placeholder'>Employee Reliever</label>
             </div>
           
