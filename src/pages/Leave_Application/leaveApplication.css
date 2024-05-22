@@ -247,7 +247,9 @@
 .company_email_div{
   margin-top: 3rem;
 }
-
+.company_email_divs{
+  margin-top: 1rem;
+}
 .disabled{
   background-color: gray;
   color:white;

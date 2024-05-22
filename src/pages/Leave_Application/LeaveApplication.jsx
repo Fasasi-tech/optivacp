@@ -33,14 +33,14 @@ const LeaveApplication = () => {
     Company_Email:"",
     Leave_Period:"",
     Leave_Type:'',
-    Days_Applied:"",
+    Days_Applied:null,
     Cell_Phone_Number:"",
     E_mail_Address:"",
     Date_of_Exam:null,
     Number_of_Previous_Attempts:"",
     Details_of_Examination:"",
     Employee_Reliver:"",
-    Start_Date:""
+    Start_Date:null
 
     //file:null
   })
@@ -87,28 +87,47 @@ useEffect(() => {
 }, [Start_Date, Days_Applied])
  
 const calculateReturningDate = () =>{
-  if (!Start_Date || isNaN(Days_Applied)) {
+  //if (!Start_Date || isNaN(Days_Applied)) 
+    
+    if (!Start_Date || Start_Date === null || isNaN(Days_Applied) || Days_Applied <= 0)  {
     console.error('Invalid input. Please provide a valid start date and days applied.');
     setReturningDate(null);
     return;
   }
   const startDate = new Date(Start_Date);
-const getStartDateday = new Date(startDate)
+//const getStartDateday = new Date(startDate)
 // const calcReturningDate = getStartDateday + Days_Applied;
 let remainingDays = Days_Applied;
 
-while (remainingDays > 0 ){
-  getStartDateday.setDate(getStartDateday.getDate() +1)
-   // Check if the current date is not a weekend (Saturday or Sunday)
-   if (getStartDateday.getDay() !== 0 && getStartDateday.getDay() !== 6) {
+while (remainingDays > 0) {
+  startDate.setDate(startDate.getDate() + 1);
+  if (isWeekday(startDate)) {
     remainingDays -= 1;
   }
 }
+
+setReturningDate(startDate);
+// while (remainingDays > 0 ){
+//   getStartDateday.setDate(getStartDateday.getDate() +1)
+//    // Check if the current date is not a weekend (Saturday or Sunday)
+//    if (getStartDateday.getDay() !== 0 && getStartDateday.getDay() !== 6) {
+//     remainingDays -= 1;
+//   }
+// }
+
+//new code
+
 //getStartDateday.setDate(startDate.getDate() +Days_Applied)
 // getStartDateday.setDate(startDate.getDate()+Days_Applied)
 console.log(startDate)
-setReturningDate(getStartDateday)
+//setReturningDate(getStartDateday)
 }
+
+// Check if a date is a weekday
+const isWeekday = (date) => date.getDay()!== 0 && date.getDay()!== 6;
+
+// Format date to MM/DD/YYYY
+
 
 
 const handleInputChange = async (e) => {
@@ -118,6 +137,7 @@ const handleInputChange = async (e) => {
   const formattedValue2 = name==='Date_of_Exam' ? formatToMMDDYYYY(value) : formattedValue
   const parsedValue = name==='Days_Applied'? parseFloat(value, 10) : formattedValue2
   
+ 
   setFormData({
     ...formData,
     [name]: parsedValue,
@@ -268,7 +288,7 @@ const isWeekend = () => {
   
 
   async function callApi(accessToken, formData){
-    try{  const response = await fetch("https://api.businesscentral.dynamics.com/v2.0/1a138626-759e-4827-97f1-b49b7fd4caef/OPTIVA_API/ODataV4/Company('My%20Company')/HRLeaveApplicationCard", {
+    try{  const response = await fetch("https://api.businesscentral.dynamics.com/v2.0/1a138626-759e-4827-97f1-b49b7fd4caef/Production/ODataV4/Company('My%20Company')/HRLeaveApplicationCard", {
     method: 'POST',
     headers: {
       'Authorization':  `Bearer ${accessToken}`, 
@@ -296,6 +316,7 @@ const isWeekend = () => {
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
+      zIndex: 9999,
     }
     )
    }
@@ -331,6 +352,7 @@ const isWeekend = () => {
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
+      zIndex: 9999,
     });
 
   }
@@ -348,7 +370,7 @@ const isWeekend = () => {
           const accessTokenResponse = await instance.acquireTokenSilent(accessTokenRequest);
           const accessToken = accessTokenResponse.accessToken;
 
-          const response = await fetch("https://api.businesscentral.dynamics.com/v2.0/1a138626-759e-4827-97f1-b49b7fd4caef/OPTIVA_API/ODataV4/Company('My%20Company')/ResponsibilityCenterList", {
+          const response = await fetch("https://api.businesscentral.dynamics.com/v2.0/1a138626-759e-4827-97f1-b49b7fd4caef/Production/ODataV4/Company('My%20Company')/ResponsibilityCenterList", {
             method: 'GET',
             headers: {
               'Authorization': `Bearer ${accessToken}`, // Include your access token
@@ -396,7 +418,7 @@ const isWeekend = () => {
       const accessTokenResponse = await instance.acquireTokenSilent(accessTokenRequest);
       const accessToken = accessTokenResponse.accessToken;
 
-      const response = await fetch("https://api.businesscentral.dynamics.com/v2.0/1a138626-759e-4827-97f1-b49b7fd4caef/OPTIVA_API/ODataV4/Company('My%20Company')/HRLeaveTypes", {
+      const response = await fetch("https://api.businesscentral.dynamics.com/v2.0/1a138626-759e-4827-97f1-b49b7fd4caef/Production/ODataV4/Company('My%20Company')/HrLeaveTypes", {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${accessToken}`, // Include your access token
@@ -437,7 +459,7 @@ const isWeekend = () => {
       const accessTokenResponse = await instance.acquireTokenSilent(accessTokenRequest);
       const accessToken = accessTokenResponse.accessToken;
 
-      const response = await fetch("https://api.businesscentral.dynamics.com/v2.0/1a138626-759e-4827-97f1-b49b7fd4caef/OPTIVA_API/ODataV4/Company('My%20Company')/HREmployeeList", {
+      const response = await fetch("https://api.businesscentral.dynamics.com/v2.0/1a138626-759e-4827-97f1-b49b7fd4caef/Production/ODataV4/Company('My%20Company')/HREmployeeList", {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${accessToken}`, // Include your access token
@@ -479,7 +501,7 @@ const isWeekend = () => {
       const accessTokenResponse = await instance.acquireTokenSilent(accessTokenRequest);
       const accessToken = accessTokenResponse.accessToken;
 
-      const response = await fetch("https://api.businesscentral.dynamics.com/v2.0/1a138626-759e-4827-97f1-b49b7fd4caef/OPTIVA_API/ODataV4/Company('My%20Company')/HREmployeeList", {
+      const response = await fetch("https://api.businesscentral.dynamics.com/v2.0/1a138626-759e-4827-97f1-b49b7fd4caef/Production/ODataV4/Company('My%20Company')/HREmployeeList", {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${accessToken}`, // Include your access token
@@ -565,7 +587,7 @@ const getNoFromEmployeeAPi = () =>{
       const accessTokenResponse = await instance.acquireTokenSilent(accessTokenRequest);
       const accessToken = accessTokenResponse.accessToken;
 
-      const response = await fetch("https://api.businesscentral.dynamics.com/v2.0/1a138626-759e-4827-97f1-b49b7fd4caef/OPTIVA_API/ODataV4/Company('My%20Company')/HRLeavePeriodList", {
+      const response = await fetch("https://api.businesscentral.dynamics.com/v2.0/1a138626-759e-4827-97f1-b49b7fd4caef/Production/ODataV4/Company('My%20Company')/HRLeavePeriodList", {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${accessToken}`, // Include your access token
@@ -774,7 +796,7 @@ const getNoFromEmployeeAPi = () =>{
               />
               <label className='placeholder'>Start Date</label>
               <span class="calendar-icon"></span>
-              <div className='company_email_div'>
+              <div className='company_email_divs'>
                  {formData.Start_Date&& isWeekend() && (<p style={{color:'red'}} className='email_validation'>Please select a weekday</p>) }
                 </div>
             </div>
@@ -782,7 +804,7 @@ const getNoFromEmployeeAPi = () =>{
             <div className='form m-form'>
               
               <input
-                type="number"
+                type='number'
                 id="Days_Applied"
                 name="Days_Applied"
                 value={formData.Days_Applied}

@@ -13,8 +13,8 @@
 }
 .welcome{
     color:#722F37;
-    font-size: 4rem;
-    font-family:Rubik bubbles ;
+    font-size: 3rem;
+    font-family:sans-serif ;
 }
 
 #tsparticles {
@@ -26,9 +26,9 @@
 .sso_sign{
     width:8rem;
     font-size: 1.5rem;
-    font-family:Rubik bubbles;
+    font-family:sans-serif;
     margin-top: 2rem;
-    background-color: #722F37;
+    background-color: blue;
     border:none;
     color:#e8dedf;
     padding:5px 20px;
